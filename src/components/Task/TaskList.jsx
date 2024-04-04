@@ -35,9 +35,9 @@ const updatePageNumber = (num)=>{
     setTaskPerPage(value)
  }
     return (
-        
-        <div>
-            <div className='grid grid-col-1 justify-center items-center gap-20 my-10  '>
+        <>
+        {tasks.length === 0? <p>You have No Task Add</p>:<div>
+        <div className='grid grid-col-1 justify-center items-center gap-20 my-10  '>
             {
                 tasks.map(task=><TaskModalInfo
                 task={task}
@@ -70,7 +70,9 @@ const updatePageNumber = (num)=>{
   <option value='50'>50</option>
 </select>
     </div>
-        </div>
+        </div>}
+        </>
+        
     );
 };
 
