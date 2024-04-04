@@ -26,7 +26,9 @@ const Navbar = () => {
    
          
           <li><Link to='addtask'>Add Task</Link></li>
-          <li><Link to='tasklist'>TaskList</Link></li>
+          {users && <>
+            <li><Link to='tasklist'>TaskList</Link></li>
+          </>}
           <li>{users? <button onClick={handleLogOut} >LogOut <span>{users.name}</span></button>:<button><Link to='login'>Login</Link></button>}</li>
     
     </>

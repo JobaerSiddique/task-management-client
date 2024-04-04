@@ -5,16 +5,20 @@ import axios from 'axios';
 import TaskModalInfo from '../../pages/Modal/TaskModalInfo';
 import { FaRegEye } from "react-icons/fa";
 import inModal from './inModal';
+import { useLoaderData } from 'react-router-dom';
 const TaskList = () => {
    const {users}= useContext(AuthContext)
    const [openModal, setOpenModal] = useState({});
-    
+    const {data}= useLoaderData()
+    console.log(data)
    const {data:tasks=[],refetch} = useQuery({
         queryKey:['tasks',users?.email],
         queryFn: async ()=>{
             const res = await axios.get(`http://localhost:5000/task/tasks?email=${users?.email}`,{withCredentials:true})
             return res.data
+            
         }
+       
    })
    
     return (
@@ -23,6 +27,8 @@ const TaskList = () => {
             {
                 tasks.map(task=><TaskModalInfo
                 task={task}
+                refetch={refetch}
+                
                 >
 
                 </TaskModalInfo>)

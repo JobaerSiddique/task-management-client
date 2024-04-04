@@ -1,14 +1,16 @@
-import React, { useContext, useState } from 'react';
-import { AuthContext } from '../../Contexts/AuthContexts';
+import React, { useContext } from 'react';
 import { useForm } from 'react-hook-form';
+import { useLoaderData, useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
-import { useNavigate } from 'react-router-dom';
+import { AuthContext } from '../../Contexts/AuthContexts';
 import axios from 'axios';
-const TaskForm = () => {
+
+const UpdateTask = () => {
+    const data = useLoaderData()
     const {users}=useContext(AuthContext)
-    const navigate = useNavigate()
-   
+    const{title,description,_id}= data.data
     const {register,formState: { errors },handleSubmit,reset} = useForm()
+    const navigate= useNavigate()
     
     const onSubmit = (data) => {
         const title= data.title
@@ -26,28 +28,31 @@ const TaskForm = () => {
         
     
        
-        const email=users.email
-       axios.post('http://localhost:5000/task/addtask',{title,description,email},{withCredentials:true})
+       
+       axios.patch(`http://localhost:5000/task/tasks/${_id}`,{title,description},{withCredentials:true})
        .then(res=>{
         if(res.data){
           Swal.fire({
             position: "top-end",
             icon: "success",
-            title: "Task Add Successfully",
+            title: "Task Update Successfully",
             showConfirmButton: false,
             timer: 1500
           });
-          reset()
+         
         }
+        navigate('/tasklist')
        })
     }
+   
     return (
-        <div className='flex justify-center items-center h-screen'>
+        <div>
+           <div className='flex justify-center items-center h-screen'>
             <div className="card lg:w-[40%] w-96 bg-base-100 shadow-xl">
   <div className="card-body">
   <div className="flex justify-center items-center">
   <div className=" px-4 md:px-10 py-4 md:py-5  w-[65%] bg-gradient-to-r from-[#52b7ff] to-[#0084ff] rounded-full  ">
-          <h3 className="text-white font-semibold md:text-xl tracking-wider uppercase text-center hover:text-black hover:font-bold hover:font-serif">Add A Task</h3>
+          <h3 className="text-white font-semibold md:text-xl tracking-wider uppercase text-center hover:text-black hover:font-bold hover:font-serif">Update  Task</h3>
         </div>
         </div>
     <form onSubmit={handleSubmit(onSubmit)} >
@@ -56,6 +61,7 @@ const TaskForm = () => {
     <span className="label-text">Title</span>
   </div>
   <input type="text" 
+  defaultValue={title}
   placeholder="Enter Your Title"
   {...register("title", { required:{
     value:true,
@@ -71,7 +77,7 @@ const TaskForm = () => {
     <span className="label-text">Description</span>
   </div>
   <textarea 
-   
+   defaultValue={description}
   className="textarea textarea-info w-[40%]" 
   
   {...register("description", { required:{
@@ -96,7 +102,8 @@ maxLength:{
   </div>
 </div>
         </div>
+        </div>
     );
 };
 
-export default TaskForm;
+export default UpdateTask;
