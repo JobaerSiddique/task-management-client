@@ -36,7 +36,7 @@ const updatePageNumber = (num)=>{
  }
     return (
         <>
-        {tasks.length === 0? <p>You have No Task Add</p>:<div>
+        {tasks.length === 0? <p className='flex justify-center items-center h-screen lg:text-5xl text-xl'>You have No Task Add</p>:<div>
         <div className='grid grid-col-1 justify-center items-center gap-20 my-10  '>
             {
                 tasks.map(task=><TaskModalInfo
