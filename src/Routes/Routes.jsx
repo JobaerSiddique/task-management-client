@@ -6,8 +6,9 @@ import TaskForm from "../components/Task/TaskForm";
 import TaskList from "../components/Task/TaskList";
 import axios from "axios";
 import UpdateTask from "../components/Task/UpdateTask";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { AuthContext } from "../Contexts/AuthContexts";
+import Home from "../pages/Home";
 
 
 const router = createBrowserRouter([
@@ -16,6 +17,10 @@ const router = createBrowserRouter([
         path:'/',
         element:<Main/>,
         children:[
+            {
+                path:'/',
+                element:<Home/>
+            },
             {
                 path:'addtask',
                 element:<TaskForm/>
