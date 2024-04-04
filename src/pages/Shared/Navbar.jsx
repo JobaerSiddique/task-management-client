@@ -1,12 +1,12 @@
 import React, { useContext, useEffect, useRef, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Contexts/AuthContexts';
 import Swal from 'sweetalert2';
 
 const Navbar = () => {
     
     const {users,logOut,setUsers}=useContext(AuthContext)
-    
+    const navigate= useNavigate()
     const handleLogOut = ()=>{
       logOut()
       .then(res=>{
@@ -19,6 +19,7 @@ const Navbar = () => {
         timer: 1500
 });
     setUsers(null)
+    navigate('/')
       })
     }
     
