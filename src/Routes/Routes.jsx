@@ -6,9 +6,12 @@ import TaskForm from "../components/Task/TaskForm";
 import TaskList from "../components/Task/TaskList";
 import axios from "axios";
 import UpdateTask from "../components/Task/UpdateTask";
+import { useContext } from "react";
+import { AuthContext } from "../Contexts/AuthContexts";
 
 
 const router = createBrowserRouter([
+    
     {
         path:'/',
         element:<Main/>,
@@ -20,7 +23,7 @@ const router = createBrowserRouter([
             {
                 path:'tasklist',
                 element:<TaskList/>,
-                loader:()=> axios.get('http://localhost:5000/task/taskcount',{withCredentials:true})
+                loader:()=> axios.get(`http://localhost:5000/task/taskcount`,{withCredentials:true})
             },
             {
                 path:'updatetask/:id',
