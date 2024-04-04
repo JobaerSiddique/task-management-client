@@ -5,7 +5,7 @@ import axios from 'axios';
 import TaskModalInfo from '../../pages/Modal/TaskModalInfo';
 import { FaRegEye } from "react-icons/fa";
 import inModal from './inModal';
-import { useLoaderData } from 'react-router-dom';
+import { Link, useLoaderData } from 'react-router-dom';
 const TaskList = () => {
    const {users}= useContext(AuthContext)
    const [pageNumber,setPageNumber] = useState(0)
@@ -36,7 +36,10 @@ const updatePageNumber = (num)=>{
  }
     return (
         <>
-        {tasks.length === 0? <p className='flex justify-center items-center h-screen lg:text-5xl text-xl'>You have No Task Add</p>:<div>
+        {tasks.length === 0? <div className='flex justify-center items-center h-screen'>
+            <p className=' lg:text-5xl text-xl'>You have No Task Add</p>
+        <p>Can you <address></address></p>
+        </div>:<div>
         <div className='grid grid-col-1 justify-center items-center gap-20 my-10  '>
             {
                 tasks.map(task=><TaskModalInfo
