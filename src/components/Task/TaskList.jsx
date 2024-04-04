@@ -36,9 +36,9 @@ const updatePageNumber = (num)=>{
  }
     return (
         <>
-        {tasks.length === 0? <div className='flex justify-center items-center h-screen'>
-            <p className=' lg:text-5xl text-xl'>You have No Task Add</p>
-        <p>Can you <address></address></p>
+        {tasks.length === 0? <div className=''>
+            <p className='flex justify-center items-center h-screen lg:text-5xl text-xl'>You have No Task Add</p><br />
+        <p className=''>Can you Add Task <span><Link className='text-orange-500' to='/addtask'></Link>Please Click Here</span> </p>
         </div>:<div>
         <div className='grid grid-col-1 justify-center items-center gap-20 my-10  '>
             {
