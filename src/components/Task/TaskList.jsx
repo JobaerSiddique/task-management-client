@@ -15,7 +15,7 @@ const TaskList = () => {
    const {data:tasks=[],refetch} = useQuery({
         queryKey:['tasks',users?.email,pageNumber,taskPerPage],
         queryFn: async ()=>{
-            const res = await axios.get(`http://localhost:5000/task/tasks?&page=${pageNumber}&size=${taskPerPage}`,{withCredentials:true})
+            const res = await axios.get(`https://task-management-server-sand-beta.vercel.app/task/tasks?&page=${pageNumber}&size=${taskPerPage}`,{withCredentials:true})
             return res.data
             
         }

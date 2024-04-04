@@ -11,16 +11,16 @@ console.log(users)
 
 
 const registers= (name,email,password)=>{
-    return axios.post('http://localhost:5000/api/register',{name,email,password},{withCredentials:true})
+    return axios.post('https://task-management-server-sand-beta.vercel.app/api/register',{name,email,password},{withCredentials:true})
 }
 const userLogin = (email,password)=>{
     console.log(email,password)
-    return axios.post('http://localhost:5000/api/login', {email,password},{withCredentials:true})
+    return axios.post('https://task-management-server-sand-beta.vercel.app/api/login', {email,password},{withCredentials:true})
      
 }
 useEffect(()=>{
    
-    axios.get('http://localhost:5000/api/verify-user',{withCredentials:true})
+    axios.get('https://task-management-server-sand-beta.vercel.app/api/verify-user',{withCredentials:true})
     .then(res=>{
         console.log(res.data)
         setUsers(res.data)
@@ -29,7 +29,7 @@ useEffect(()=>{
 },[])
 
 const logOut = ()=>{
-    return axios.get('http://localhost:5000/api/logout',{withCredentials:true})
+    return axios.get('https://task-management-server-sand-beta.vercel.app/api/logout',{withCredentials:true})
 }
 const authIfo={
     

@@ -21,7 +21,7 @@ const TaskModalInfo = ({task,refetch}) => {
         confirmButtonText: "Yes, Delete it!"
       }).then((result) => {
         if (result.isConfirmed) {
-          axios.delete(`http://localhost:5000/task/tasks/${id}`,{withCredentials:true})
+          axios.delete(`https://task-management-server-sand-beta.vercel.app/task/tasks/${id}`,{withCredentials:true})
           .then(res=>{
             if(res.data){
               Swal.fire({
@@ -56,15 +56,15 @@ const TaskModalInfo = ({task,refetch}) => {
 </div> */}
 <div className="card w-96 bg-base-200 ">
   <div className="card-body items-center ">
-    <h2 className="card-title ">{title}</h2>
+    <h2 className="card-title ">Title: {title}</h2>
     
         <p  className="text-gray-800 w-full p-4 overflow-x-clip text-justify te">
           {description}
         </p>
    
     <div className="card-actions justify-end">
-      <Link to={`/updatetask/${_id}`} className="btn btn-success"><GrUpdate/> Accept</Link>
-      <button onClick={()=>handleDeleteTask(_id)} className="btn btn-error"><RiDeleteBin5Fill/>Deny</button>
+      <Link to={`/updatetask/${_id}`} className="btn btn-success"><GrUpdate/> update</Link>
+      <button onClick={()=>handleDeleteTask(_id)} className="btn btn-error"><RiDeleteBin5Fill/>Delete</button>
     </div>
   </div>
 </div>

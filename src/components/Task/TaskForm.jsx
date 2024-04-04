@@ -27,7 +27,7 @@ const TaskForm = () => {
     
        
         const email=users.email
-       axios.post('http://localhost:5000/task/addtask',{title,description,email},{withCredentials:true})
+       axios.post('https://task-management-server-sand-beta.vercel.app/task/addtask',{title,description,email},{withCredentials:true})
        .then(res=>{
         if(res.data){
           Swal.fire({

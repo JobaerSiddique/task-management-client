@@ -23,12 +23,12 @@ const router = createBrowserRouter([
             {
                 path:'tasklist',
                 element:<TaskList/>,
-                loader:()=> axios.get(`http://localhost:5000/task/taskcount`,{withCredentials:true})
+                loader:()=> axios.get(`https://task-management-server-sand-beta.vercel.app/task/taskcount`,{withCredentials:true})
             },
             {
                 path:'updatetask/:id',
                 element:<UpdateTask/>,
-                loader:  ({params})=> axios.get(`http://localhost:5000/task/tasks/${params.id}`,{withCredentials:true})
+                loader:  ({params})=> axios.get(`https://task-management-server-sand-beta.vercel.app/task/tasks/${params.id}`,{withCredentials:true})
             },
             {
                 path:'login',

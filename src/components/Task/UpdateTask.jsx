@@ -29,7 +29,7 @@ const UpdateTask = () => {
     
        
        
-       axios.patch(`http://localhost:5000/task/tasks/${_id}`,{title,description},{withCredentials:true})
+       axios.patch(`https://task-management-server-sand-beta.vercel.app/task/tasks/${_id}`,{title,description},{withCredentials:true})
        .then(res=>{
         if(res.data){
           Swal.fire({
