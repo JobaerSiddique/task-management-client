@@ -12,7 +12,7 @@ const TaskList = () => {
    const [taskPerPage,setTaskPerPage]= useState(10)
     const {data}= useLoaderData()
     console.log(data)
-   const {data:tasks=[],refetch} = useQuery({
+   const {data:tasks=[],refetch,isLoading} = useQuery({
         queryKey:['tasks',users?.email,pageNumber,taskPerPage],
         queryFn: async ()=>{
             const res = await axios.get(`https://task-management-server-sand-beta.vercel.app/task/tasks?&page=${pageNumber}&size=${taskPerPage}`,{withCredentials:true})
@@ -21,7 +21,7 @@ const TaskList = () => {
         }
        
    })
-   console.log('number',pageNumber,taskPerPage)
+  
 // pagination
 
 const numberofPages= Math.ceil(data.total / taskPerPage)
@@ -33,6 +33,10 @@ const updatePageNumber = (num)=>{
  const handleTaskChange = e =>{
     const value = parseInt(e.target.value)
     setTaskPerPage(value)
+ }
+
+ if(isLoading){
+    return <p>Loading</p>
  }
     return (
         <>
