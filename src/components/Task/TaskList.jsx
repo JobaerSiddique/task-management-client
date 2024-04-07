@@ -6,6 +6,7 @@ import TaskModalInfo from '../../pages/Modal/TaskModalInfo';
 import { FaRegEye } from "react-icons/fa";
 import inModal from './inModal';
 import { Link, useLoaderData } from 'react-router-dom';
+import Loading from '../../pages/Shared/Loading';
 const TaskList = () => {
    const {users}= useContext(AuthContext)
    const [pageNumber,setPageNumber] = useState(0)
@@ -36,7 +37,7 @@ const updatePageNumber = (num)=>{
  }
 
  if(isLoading){
-    return <p>Loading</p>
+    return <p><Loading/></p>
  }
     return (
         <>
